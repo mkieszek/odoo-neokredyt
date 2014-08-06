@@ -1,0 +1,31 @@
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="view_neo_crm_lead_form">
+			<field name="name">NEO - Chances Form</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+			<field name="arch" type="xml">
+				
+				<xpath expr="/form/sheet/div/label[@for='planned_revenue']" position="attributes">
+					<attribute name="string">Kwota wnioskowana</attribute>
+                </xpath>
+                
+				<xpath expr="/form/sheet/group/group/field[@name='user_id']" position="after">
+					<field name="adviser"/>
+					<field name="adv_mail"/>
+					<field name="adv_tel"/>
+                </xpath>
+                
+				<xpath expr="/form/sheet/notebook/page" position="after">
+                    <page string="Produkt">
+                    	<group>                    	
+	                    	<field name="payment_date"/>
+	                    	<field name="amount"/>
+                    	</group>
+                    </page>
+				</xpath>
+
+			</field>
+		</record>
+	</data>
+</openerp>

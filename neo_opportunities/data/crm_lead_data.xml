@@ -3,10 +3,5 @@
         <record model="crm.case.stage" id="crm.stage_lead2">
             <field name="name">Wniosek</field>
         </record>
-        
-        <record model="crm.case.stage" id="crm.stage_lead3">
-            <field name="name">Doradca</field>
-        </record>
-
     </data>
 </openerp>
