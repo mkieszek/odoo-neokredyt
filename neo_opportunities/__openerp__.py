@@ -28,13 +28,16 @@
     'author': 'Via IT Solution',
     'website': 'http://www.viait.pl ',
     'depends': ['crm','product'],
-    'data': [],
+    'data': ['data/crm_lead_data.xml',
+             'data/neo_product_data.xml'],
     'demo': [],
     'test':[],
     'installable': True,
     'images': [],
     'update_xml' : ['view/res_partner_view.xml',
-                    'view/crm_lead_view.xml'],
+                    'view/crm_lead_view.xml',
+                    'view/neo_credit_view.xml',
+                    'view/neo_product_view.xml'],
     'sequence': 1001,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

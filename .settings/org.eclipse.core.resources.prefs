@@ -2,4 +2,6 @@ eclipse.preferences.version=1
 encoding//neo_opportunities/__init__.py=utf-8
 encoding//neo_opportunities/__openerp__.py=utf-8
 encoding//neo_opportunities/crm_lead.py=utf-8
+encoding//neo_opportunities/neo_credit.py=utf-8
+encoding//neo_opportunities/product.py=utf-8
 encoding//neo_opportunities/res_partner.py=utf-8

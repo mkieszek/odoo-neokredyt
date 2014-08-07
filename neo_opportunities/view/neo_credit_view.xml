@@ -1,0 +1,90 @@
+<openerp>
+	<data>        
+		<record model='ir.ui.view' id='neo_credit_form'>
+			<field name="name">neo.credit.form</field>
+            <field name="model">neo.credit</field>
+            <field name="arch" type="xml">
+				<form string="Credits" version="7.0">
+                <sheet>
+                <label class="oe_edit_only" for="name" string="Credit Name"/>
+                <h1><field name="name" class="oe_inline"/></h1>
+				<group col="2">
+					<group>
+						<field name="client_id"/>
+						<field name="telephone"/>
+						<field name="address"/>
+						<field name="email"/>
+						<field name="product_id" />
+						<field name="contract_date"/>
+						<field name="commission"/>
+						<field name="interest"/>
+						<field name="period"/>
+						<field name="end_date"/>
+						<field name="insurance"/>
+					</group>
+					<group>
+						<field name="year"/>
+						<field name="months"/>
+						<field name="day_installment"/>
+						<field name="delay_day"/>
+						<field name="payment_request"/>
+						<field name="report_krd_big"/>
+						<field name="termination"/>
+						<field name="charge_call"/>
+						<field name="installment"/>
+						<field name="total_arrears"/>
+						<field name="amount_insurance"/>
+						<field name="amount_credit"/>
+						<field name="total_liabilities"/>
+					</group>
+				</group>
+			</sheet>
+				</form>
+			</field>
+		</record>
+		
+		<record model='ir.ui.view' id='neo_credit_tree'>
+                <field name="name">neo.credit.tree</field>
+                <field name="model">neo.credit</field>
+                <field name="arch" type="xml">
+                    <tree string="Credits" version="7.0">
+                    	<field name="name" />
+                        <field name="client_id" />
+                        <field name="product_id" />
+                    </tree>
+                </field>
+            </record>
+        
+        <record model='ir.ui.view' id='neo_credit_search'>
+            <field name="name">neo.credit.search</field>
+            <field name="model">neo.credit</field>
+            <field name="arch" type="xml">
+                <search string="All Credits">
+                	<field name="name" />
+        			<field name="client_id" />
+               </search>
+            </field>
+        </record>
+        
+        <record id="action_credits" model="ir.actions.act_window">
+            <field name="name">Kredyty</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">neo.credit</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="neo_credit_tree"/>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+            <field name="search_view_id" ref="neo_credit_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a credit.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_neo_credits"
+	        action="action_credits" parent="base.menu_sales"
+	        sequence="1001"/>
+	</data>
+</openerp>

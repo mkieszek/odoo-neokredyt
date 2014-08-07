@@ -7,23 +7,27 @@
 			<field name="inherit_id" ref="base.view_partner_form" />
 			<field name="priority" eval="99" />
 			<field name="arch" type="xml">
-				<xpath expr="/form/sheet/notebook/page" position="after">
-                            <page string="Lista szans">
-                            </page>
-				</xpath>
-			</field>
-		</record>
-		<record model="ir.ui.view" id="view_neo_res_partner">
-			<field name="name">neo.partners.form</field>
-			<field name="model">res.partner</field>
-	        <field name="inherit_id" ref="base.view_partner_form"/>
-			<field name="type">form</field>
-			<field name="arch" type="xml">
+				<xpath expr="/form/sheet/notebook/page[@string='Accounting']" position="after">
+					
+                    <page string="Lista szans">
+                    	<field name="chances_ids"/>
+                    </page>
+                    
+                    <page string="Wnioski" attrs="{'invisible':[('bank','=',False)]}">
+                    </page>
+                    
+                    <page string="Procedury" attrs="{'invisible':[('bank','=',False)]}">
+                    </page>               
+                    
+                </xpath>
+                
 	            <xpath expr="/form/sheet/notebook/page[@string='Sales &amp; Purchases']/group/group/field[@name='supplier']" position="before">
 		            <field name="bank"/>
 		        </xpath>
-	        </field>
-	    </record>
+			</field>
+		</record>
+
+	    
 		<record model="ir.ui.view" id="view_neo_res_partner_filter">
 			<field name="name">view_neo_res_partner_filter</field>
 			<field name="model">res.partner</field>

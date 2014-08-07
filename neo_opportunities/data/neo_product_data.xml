@@ -1,0 +1,48 @@
+<openerp>
+	<data noupdate='False'>
+        <record model="product.product" id="kredyt_gotowkowy">
+            <field name="name">Kredyt gotówkowy</field>
+            <field name="type_client">1</field>
+        </record>
+        <record model="product.product" id="kredyt_lombardowy">
+            <field name="name">Kredyt lombardowy</field>
+            <field name="type_client">1</field>
+        </record>
+        <record model="product.product" id="kredyt_hipoteczny">
+            <field name="name">Kredyt hipoteczny</field>
+            <field name="type_client">1</field>
+        </record>
+        <record model="product.product" id="pozyczka_hipoteczna">
+            <field name="name">Pożyczka hipoteczna</field>
+            <field name="type_client">1</field>
+        </record>
+        <record model="product.product" id="kredyt_samochodowy">
+            <field name="name">Kredyt samochodowy</field>
+            <field name="type_client">1</field>
+        </record>
+        <record model="product.product" id="linia_kredytowa">
+            <field name="name">Linia kredytowa</field>
+            <field name="type_client">1</field>
+        </record>
+        <record model="product.product" id="karta_kredytowa">
+            <field name="name">Karta kredytowa</field>
+            <field name="type_client">1</field>
+        </record>
+        <record model="product.product" id="konto_osobiste">
+            <field name="name">Konto osobiste</field>
+            <field name="type_client">1</field>
+        </record>
+        <record model="product.product" id="kredyt_firmowy">
+            <field name="name">Kredyt firmowy</field>
+        </record>
+        <record model="product.product" id="linia_kredytowa2">
+            <field name="name">Linia kredytowa</field>
+        </record>
+        <record model="product.product" id="leasing_obrotowy">
+            <field name="name">Leasing obrotowy</field>
+        </record>
+        <record model="product.product" id="leasing_finansowy">
+            <field name="name">Leasing finansowy</field>
+        </record>
+    </data>
+</openerp>

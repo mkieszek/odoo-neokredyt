@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>        
+		<record model="ir.ui.view" id="view_neo_product_form">
+			<field name="name">neo.product.form</field>
+			<field name="model">product.product</field>
+			<field name="inherit_id" ref="product.product_normal_form_view" />
+			<field name="priority" eval="99" />
+			<field name="arch" type="xml">
+				<xpath expr="/form/sheet/notebook/page/group/group/field[@name='type']" position="before">
+					<field name="type_client"/>
+                </xpath>
+			</field>
+		</record>    
+	</data>
+</openerp>

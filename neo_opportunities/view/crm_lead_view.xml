@@ -15,12 +15,28 @@
 					<field name="adv_mail"/>
 					<field name="adv_tel"/>
                 </xpath>
+				<xpath expr="/form/sheet/group/group/field[@name='priority']" position="after">
+					<field name="number_queries"/>
+                </xpath>
                 
 				<xpath expr="/form/sheet/notebook/page" position="after">
                     <page string="Produkt">
-                    	<group>                    	
-	                    	<field name="payment_date"/>
-	                    	<field name="amount"/>
+                    	<group>
+	                    	<group>                    	
+		                    	<field name="payment_date"/>
+		                    	<field name="amount"/>
+		                    	<field name="bank"/>
+		                    	<field name="interest"/>
+		                    	<field name="bank_comission"/>
+	                    	</group>
+	                    	<group>
+		                    	<field name="period"/>
+		                    	<field name="installment"/>
+		                    	<field name="insurance"/>
+		                    	<field name="insurer"/>
+		                    	<field name="rrso"/>
+		                    	<field name="commission"/>
+	                    	</group>
                     	</group>
                     </page>
 				</xpath>
