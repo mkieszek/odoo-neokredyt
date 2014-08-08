@@ -10,6 +10,7 @@ class neo_credit(Model):
     _name = "neo.credit"
     _columns = {
         'name' : fields.char('Nazwa'),
+        'schedule_ids' : fields.one2many('neo.schedule','credit_id'),
         'client_id': fields.many2one('res.partner', 'Klient'),
         'telephone' : fields.integer('Nr kontaktowy'),
         'address' : fields.char('Adres korespondencyjny'),
@@ -22,10 +23,10 @@ class neo_credit(Model):
         'end_date' : fields.datetime('Data zakończenia umowy'),
         'insurance' : fields.char('Ubezpieczenie'),
         'year': fields.selection([('2012','2012'),('2013','2013'),('2014','2014'),('2015','2015'),('2016','2016'),('2017','2017'),
-                              ('2018','2018'),('2019','2019'),('2020','2020'),('2021','2021'),('2022','2022'),('2023','2023')],'Year'),
+                              ('2018','2018'),('2019','2019'),('2020','2020'),('2021','2021'),('2022','2022'),('2023','2023')],'Rok'),
         'months': fields.selection([('1','January'),('2','February'),('3','March'),('4','April'),
                                 ('5','May'),('6','June'),('7','July'),('8','August'),('9','September'),
-                                ('10','October'),('11','November'),('12','December')],'Month'),
+                                ('10','October'),('11','November'),('12','December')],'Miesiąc'),
         'day_installment' : fields.integer('Dzień raty'),
         'delay_day' : fields.integer('Ilość dni opóźnienia'),
         'payment_request' : fields.integer('Wezwania do zapłaty'),
@@ -38,6 +39,4 @@ class neo_credit(Model):
         'amount_credit' : fields.float('Kwota kredytu'),
         'total_liabilities' : fields.float('Suma zobowiązania'),
         'stage_id' : fields.many2one('neo.credit.stage','Status'),
-        
-        
     }

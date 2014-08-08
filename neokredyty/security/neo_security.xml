@@ -32,28 +32,21 @@
 		        <record id="group_neo_credits_unlink" model="res.groups">
 		            <field name="name">Credits Unlink</field>
 		            <field name="comment">Credits Unlink</field>
-		            <field name="category_id" ref="module_category_cd_sales"/>
+		            <field name="category_id" ref="module_category_neo_credit"/>
 					<field name="implied_ids" eval="[(4, ref('group_neo_credits_read'))]"/>
 		        </record>
 	        
 	        <!-- Podstawowe uprawnienia użytkowników -->
-		        <record id="cederroth_products.group_cd_marketing_director" model="res.groups">
-		            <field name="name">Marketing Director</field>
-		            <field name="comment">Marketing Director</field>
-		            <field name="category_id" ref="cederroth_products.cd_module_category_cederroth"/>
-		            <field name="implied_ids" eval="[(4, ref('group_cd_promotions_read')),
-			            							(4, ref('group_cd_cost_data_read')),
-			            							(4, ref('group_cd_type_promotions_read'))]"/>
+		        <record id="neokredyty.group_neo_consultant" model="res.groups">
+		            <field name="name">Konsultant</field>
+		            <field name="comment">Konsultant</field>
+		            <field name="category_id" ref="neokredyty.module_category_neo_credit"/>
 		        </record>
 		        
-		       	<record id="cederroth_products.group_cd_kam" model="res.groups">
-		            <field name="name">KAM</field>
-		            <field name="comment">Key Account Menager</field>
-		            <field name="category_id" ref="cederroth_products.cd_module_category_cederroth"/>
-					<field name="implied_ids" eval="[(4, ref('group_cd_promotions_create')),
-													(4, ref('group_cd_type_promotions_read')),
-													(4, ref('group_cd_cost_data_read')),
-													(4, ref('group_cd_promotions_read_kam'))]"/>
+		       	<record id="neokredyty.group_neo_chief" model="res.groups">
+		            <field name="name">Szef</field>
+		            <field name="comment">Szef</field>
+		            <field name="category_id" ref="neokredyty.module_category_neo_credit"/>
 		        </record>
 
     </data>

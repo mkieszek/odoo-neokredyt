@@ -9,4 +9,7 @@ class res_partner(Model):
     _columns = {
         'bank': fields.boolean('Bank', help="Check this box if this contact is a Bank."),
         'chances_ids' : fields.one2many('crm.lead','partner_id','Szanse'),
+        'conclusions_ids' : fields.one2many('neo.conclusions','partner_id','Załączniki'),
+        'procedures_ids' : fields.one2many('neo.procedures','partner_id','Załączniki'),
+        
     }

@@ -39,7 +39,21 @@
 						<field name="total_liabilities"/>
 					</group>
 				</group>
-			</sheet>
+				<notebook colspan="4">
+					<page string="Harmonogram spłat">
+						<field name="schedule_ids">
+							<tree>
+								<field name="end_date"/>
+								<field name="part_interest"/>
+								<field name="part_capital"/>
+								<field name="number_rate"/>
+								<field name="installment_all"/>
+								<field name="capital_pay"/>
+							</tree>
+						</field>
+					</page>
+				</notebook>
+				</sheet>
 				</form>
 			</field>
 		</record>

@@ -1,19 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_neo_credits_read,Credits Read,model_neo_credit,group_cd_promotions_read,1,0,0,0
-access_neo_credits_write,Credits Write,model_neo_credit,group_cd_promotions_write,0,1,0,0
-access_neo_credits_create,Credits Create,model_neo_credit,group_cd_promotions_create,0,0,1,0
-access_neo_credits_unlink,Credits Unlink,model_neo_credit,group_cd_promotions_unlink,0,0,0,1
-access_cd_cost_promotions,Cost promotions,model_cd_cost_promotions,group_cd_promotions_read,1,1,1,1
-access_cd_product_rel,Products promotions,model_cd_product_rel,group_cd_promotions_read,1,1,1,1
-access_cd_gratis_read,Promotions Read,model_cd_gratis,group_cd_promotions_read,1,0,0,0
-access_cd_gratis_all,Promotions All,model_cd_gratis,group_cd_promotions_write,0,1,1,1
-access_cd_promotions_stage_read,Promotions stage Read,model_cd_promotions_stage,group_cd_promotions_read,1,0,0,0
-access_cd_promotions_stage_all,Credits Create,model_cd_promotions_stage,group_cd_promotions_write,0,1,1,1
-access_cd_type_promotions_read,Type promotions Read,model_cd_type_promotions,group_cd_type_promotions_read,1,0,0,0
-access_cd_type_promotions_write,Type promotions Write,model_cd_type_promotions,group_cd_type_promotions_write,0,1,0,0
-access_cd_type_promotions_create,Type promotions Create,model_cd_type_promotions,group_cd_type_promotions_create,0,0,1,0
-access_cd_type_promotions_unlink,Type promotions Unlink,model_cd_type_promotions,group_cd_type_promotions_unlink,0,0,0,1
-access_cd_cost_data_read,Cost data Read,model_cd_cost_data,group_cd_cost_data_read,1,0,0,0
-access_cd_cost_data_write,Cost data Write,model_cd_cost_data,group_cd_cost_data_write,0,1,0,0
-access_cd_cost_data_create,Cost data Create,model_cd_cost_data,group_cd_cost_data_create,0,0,1,0
-access_cd_cost_data_unlink,Cost data Unlink,model_cd_cost_data,group_cd_cost_data_unlink,0,0,0,1
+access_neo_credits_read,Credits Read,model_neo_credit,group_neo_consultant,1,0,0,0
+access_neo_credits_write,Credits Write,model_neo_credit,group_neo_consultant,0,1,0,0
+access_neo_credits_create,Credits Create,model_neo_credit,group_neo_consultant,0,0,1,0
+access_neo_credits_unlink,Credits Unlink,model_neo_credit,group_neo_consultant,0,0,0,1
