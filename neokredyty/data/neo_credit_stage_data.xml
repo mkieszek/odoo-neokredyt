@@ -1,0 +1,19 @@
+<openerp>
+	<data noupdate='False'>
+        <record model="neo.credit.stage" id="credit_active">
+            <field name="name">Aktywny</field>
+            <field name="sequence">10</field>
+            <field name="state">active</field>
+        </record>
+        <record model="neo.credit.stage" id="credit_closed">
+            <field name="name">Zamknięty</field>
+            <field name="sequence">20</field>
+            <field name="state">closed</field>
+        </record>
+        <record model="neo.credit.stage" id="credit_vindication">
+            <field name="name">W windykacji</field>
+            <field name="sequence">30</field>
+            <field name="state">vindication</field>
+        </record>
+    </data>
+</openerp>

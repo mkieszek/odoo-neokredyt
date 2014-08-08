@@ -3,3 +3,4 @@ import res_partner
 import crm_lead
 import neo_credit
 import product
+import neo_credit_stage

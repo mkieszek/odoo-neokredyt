@@ -3,6 +3,9 @@
 from openerp.osv.orm import Model
 from openerp.osv import fields
 
+import neo_credit_stage
+
+
 class neo_credit(Model):
     _name = "neo.credit"
     _columns = {
@@ -34,6 +37,7 @@ class neo_credit(Model):
         'amount_insurance' : fields.float('Kwota ubezpieczenia'),
         'amount_credit' : fields.float('Kwota kredytu'),
         'total_liabilities' : fields.float('Suma zobowiązania'),
+        'stage_id' : fields.many2one('neo.credit.stage','Status'),
         
         
     }

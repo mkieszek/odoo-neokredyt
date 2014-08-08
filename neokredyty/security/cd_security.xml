@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+        <!-- Dodanie kategorii uprawnień -->
+        <record model="ir.module.category" id="module_category_neo_credit">
+            <field name="name">Neo Kredyty</field>
+            <field name="sequence">41</field>
+        </record>
+        
+        <!-- Grupy uprawnień -->	
+        	<!-- Kredyty -->        
+		        <record id="group_neo_credits_read" model="res.groups">
+		            <field name="name">Credits Read</field>
+		            <field name="comment">Credits Read</field>
+		            <field name="category_id" ref="module_category_neo_credit"/>
+		        </record>
+		        
+		        <record id="group_neo_credits_write" model="res.groups">
+		            <field name="name">Credits Write</field>
+		            <field name="comment">Credits Write</field>
+		            <field name="category_id" ref="module_category_neo_credit"/>
+					<field name="implied_ids" eval="[(4, ref('group_neo_credits_read'))]"/>
+		        </record>
+		        
+		        <record id="group_neo_credits_create" model="res.groups">
+		            <field name="name">Credits Create</field>
+		            <field name="comment">Credits Create</field>
+		            <field name="category_id" ref="module_category_neo_credit"/>
+					<field name="implied_ids" eval="[(4, ref('group_neo_credits_write'))]"/>
+		        </record>
+		        
+		        <record id="group_neo_credits_unlink" model="res.groups">
+		            <field name="name">Credits Unlink</field>
+		            <field name="comment">Credits Unlink</field>
+		            <field name="category_id" ref="module_category_cd_sales"/>
+					<field name="implied_ids" eval="[(4, ref('group_neo_credits_read'))]"/>
+		        </record>
+	        
+	        <!-- Podstawowe uprawnienia użytkowników -->
+		        <record id="cederroth_products.group_cd_marketing_director" model="res.groups">
+		            <field name="name">Marketing Director</field>
+		            <field name="comment">Marketing Director</field>
+		            <field name="category_id" ref="cederroth_products.cd_module_category_cederroth"/>
+		            <field name="implied_ids" eval="[(4, ref('group_cd_promotions_read')),
+			            							(4, ref('group_cd_cost_data_read')),
+			            							(4, ref('group_cd_type_promotions_read'))]"/>
+		        </record>
+		        
+		       	<record id="cederroth_products.group_cd_kam" model="res.groups">
+		            <field name="name">KAM</field>
+		            <field name="comment">Key Account Menager</field>
+		            <field name="category_id" ref="cederroth_products.cd_module_category_cederroth"/>
+					<field name="implied_ids" eval="[(4, ref('group_cd_promotions_create')),
+													(4, ref('group_cd_type_promotions_read')),
+													(4, ref('group_cd_cost_data_read')),
+													(4, ref('group_cd_promotions_read_kam'))]"/>
+		        </record>
+
+    </data>
+</openerp>

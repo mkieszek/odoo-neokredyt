@@ -5,6 +5,7 @@
             <field name="model">neo.credit</field>
             <field name="arch" type="xml">
 				<form string="Credits" version="7.0">
+					<header><field name="stage_id" widget="statusbar" clickable="True"/></header>
                 <sheet>
                 <label class="oe_edit_only" for="name" string="Credit Name"/>
                 <h1><field name="name" class="oe_inline"/></h1>
