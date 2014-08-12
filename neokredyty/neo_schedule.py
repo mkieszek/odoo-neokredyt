@@ -7,10 +7,10 @@ class neo_schedule(Model):
     _columns = {
         'name' : fields.char('Nazwa'),
         'credit_id' : fields.many2one('neo.credit'),
-        'end_date' : fields.date('Data'),
-        'part_interest' : fields.float('Część Odsetkowa'),
-        'part_capital' : fields.float('Część kapitałowa'),
-        'number_rate' : fields.integer('Numer raty'),
-        'installment_all' :fields.float('Rata łącznie'),
-        'capital_pay': fields.float('Kapitał do spłaty'),
+        'month' : fields.date('Miesiąc'),
+        'start_balance' : fields.float('Saldo początkowe kapitału'),
+        'repayment_interest' : fields.float('Spłata odsetek'),
+        'repayment_credit' : fields.integer('Spłata kredytu'),
+        'full_installment' :fields.float('Pełna rata'),
+        'repay': fields.float('Pozostało do spłaty'),
     }

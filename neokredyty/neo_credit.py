@@ -2,25 +2,25 @@
 
 from openerp.osv.orm import Model
 from openerp.osv import fields
-
+import pdb
 import neo_credit_stage
 
 
 class neo_credit(Model):
     _name = "neo.credit"
     _columns = {
-        'name' : fields.char('Nazwa'),
+        'name' : fields.char('Nazwa',required=True),
         'schedule_ids' : fields.one2many('neo.schedule','credit_id'),
-        'client_id': fields.many2one('res.partner', 'Klient'),
+        'client_id': fields.many2one('res.partner', 'Klient',required=True),
         'telephone' : fields.integer('Nr kontaktowy'),
         'address' : fields.char('Adres korespondencyjny'),
         'email' : fields.char('Mail'),
         'product_id' :fields.many2one('product.product', 'Produkt', domain="[('type_client','=',client_id.is_company)]"),
-        'contract_date' :fields.datetime('Data umowy'),
+        'contract_date' :fields.date('Data umowy'),
         'commission' : fields.float('Prowizja'),
         'interest' : fields.float('Oprocentowanie'),
         'period' : fields.integer('Okres'),
-        'end_date' : fields.datetime('Data zakończenia umowy'),
+        'end_date' : fields.date('Data zakończenia umowy'),
         'insurance' : fields.char('Ubezpieczenie'),
         'year': fields.selection([('2012','2012'),('2013','2013'),('2014','2014'),('2015','2015'),('2016','2016'),('2017','2017'),
                               ('2018','2018'),('2019','2019'),('2020','2020'),('2021','2021'),('2022','2022'),('2023','2023')],'Rok'),
@@ -39,4 +39,14 @@ class neo_credit(Model):
         'amount_credit' : fields.float('Kwota kredytu'),
         'total_liabilities' : fields.float('Suma zobowiązania'),
         'stage_id' : fields.many2one('neo.credit.stage','Status'),
+        'type_schedule' : fields.selection((('1','Malejące'),('2','Równe')), 'Raty'),
     }
+    
+    
+    def create(self, cr, uid, data, context=None):
+    
+        credit_id = super(neo_credit, self).create(cr, uid, data, context=context)
+        
+        pdb.set_trace()
+        
+        return credit_id

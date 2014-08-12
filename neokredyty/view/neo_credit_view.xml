@@ -37,18 +37,22 @@
 						<field name="amount_insurance"/>
 						<field name="amount_credit"/>
 						<field name="total_liabilities"/>
+						
+						
 					</group>
 				</group>
 				<notebook colspan="4">
+					
+					<field name="type_schedule"/>
 					<page string="Harmonogram spłat">
 						<field name="schedule_ids">
 							<tree>
-								<field name="end_date"/>
-								<field name="part_interest"/>
-								<field name="part_capital"/>
-								<field name="number_rate"/>
-								<field name="installment_all"/>
-								<field name="capital_pay"/>
+								<field name="month"/>
+								<field name="start_balance"/>
+								<field name="repayment_interest"/>
+								<field name="repayment_credit"/>
+								<field name="full_installment"/>
+								<field name="repay"/>
 							</tree>
 						</field>
 					</page>

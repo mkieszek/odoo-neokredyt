@@ -3,7 +3,11 @@
     <data>        
         <!-- Dodanie kategorii uprawnień -->
         <record model="ir.module.category" id="module_category_neo_credit">
-            <field name="name">Neo Kredyty</field>
+            <field name="name">Neo Kredyty - Użytkownicy</field>
+            <field name="sequence">42</field>
+        </record>
+        <record model="ir.module.category" id="module_category_neo_credit_access">
+            <field name="name">Neo Kredyty - Uprawnienia</field>
             <field name="sequence">41</field>
         </record>
         
@@ -12,27 +16,27 @@
 		        <record id="group_neo_credits_read" model="res.groups">
 		            <field name="name">Credits Read</field>
 		            <field name="comment">Credits Read</field>
-		            <field name="category_id" ref="module_category_neo_credit"/>
+		            <field name="category_id" ref="module_category_neo_credit_access"/>
 		        </record>
 		        
 		        <record id="group_neo_credits_write" model="res.groups">
 		            <field name="name">Credits Write</field>
 		            <field name="comment">Credits Write</field>
-		            <field name="category_id" ref="module_category_neo_credit"/>
+		            <field name="category_id" ref="module_category_neo_credit_access"/>
 					<field name="implied_ids" eval="[(4, ref('group_neo_credits_read'))]"/>
 		        </record>
 		        
 		        <record id="group_neo_credits_create" model="res.groups">
 		            <field name="name">Credits Create</field>
 		            <field name="comment">Credits Create</field>
-		            <field name="category_id" ref="module_category_neo_credit"/>
+		            <field name="category_id" ref="module_category_neo_credit_access"/>
 					<field name="implied_ids" eval="[(4, ref('group_neo_credits_write'))]"/>
 		        </record>
 		        
 		        <record id="group_neo_credits_unlink" model="res.groups">
 		            <field name="name">Credits Unlink</field>
 		            <field name="comment">Credits Unlink</field>
-		            <field name="category_id" ref="module_category_neo_credit"/>
+		            <field name="category_id" ref="module_category_neo_credit_access"/>
 					<field name="implied_ids" eval="[(4, ref('group_neo_credits_read'))]"/>
 		        </record>
 	        
