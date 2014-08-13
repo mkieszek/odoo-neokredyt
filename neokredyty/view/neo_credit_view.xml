@@ -22,11 +22,12 @@
 						<field name="period"/>
 						<field name="end_date"/>
 						<field name="insurance"/>
+						<field name="type_schedule"/>
 					</group>
 					<group>
 						<field name="year"/>
 						<field name="months"/>
-						<field name="day_installment"/>
+						<field name="day"/>
 						<field name="delay_day"/>
 						<field name="payment_request"/>
 						<field name="report_krd_big"/>
@@ -47,8 +48,7 @@
 					<page string="Harmonogram spłat">
 						<field name="schedule_ids">
 							<tree>
-								<field name="month"/>
-								<field name="start_balance"/>
+								<field name="name"/>
 								<field name="repayment_interest"/>
 								<field name="repayment_credit"/>
 								<field name="full_installment"/>

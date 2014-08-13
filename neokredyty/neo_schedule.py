@@ -5,12 +5,10 @@ from openerp.osv import fields
 class neo_schedule(Model):
     _name = "neo.schedule"
     _columns = {
-        'name' : fields.char('Nazwa'),
+        'name' : fields.char('Nr raty',readonly=True),
         'credit_id' : fields.many2one('neo.credit'),
-        'month' : fields.date('Miesiąc'),
-        'start_balance' : fields.float('Saldo początkowe kapitału'),
-        'repayment_interest' : fields.float('Spłata odsetek'),
-        'repayment_credit' : fields.integer('Spłata kredytu'),
-        'full_installment' :fields.float('Pełna rata'),
-        'repay': fields.float('Pozostało do spłaty'),
+        'repayment_interest' : fields.float('Odseteki',readonly=True),
+        'repayment_credit' : fields.float('Kapitał',readonly=True),
+        'full_installment' :fields.float('Pełna rata',readonly=True),
+        'repay': fields.float('Pozostało do spłaty',readonly=True),
     }
