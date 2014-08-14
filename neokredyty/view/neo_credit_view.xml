@@ -9,25 +9,30 @@
                 <sheet>
                 <label class="oe_edit_only" for="name" string="Credit Name"/>
                 <h1><field name="name" class="oe_inline"/></h1>
-				<group col="2">
-					<group>
-						<field name="client_id"/>
-						<field name="telephone"/>
+				<group col="4">
+					<group string="Dane klienta">
+						<field name="client_id" on_change="on_change_client_id(client_id)"/>
+						<field name="phone"/>
+						<field name="mobile"/>
 						<field name="address"/>
 						<field name="email"/>
+					</group>
+					<group string="Kredyt - umowa">
 						<field name="product_id" />
-						<field name="contract_date"/>
+						<field name="amount_credit"/>
+						<field name="amount_insurance"/>
+						<field name="insurance"/>
 						<field name="commission"/>
 						<field name="interest"/>
+						<field name="contract_date"/>
 						<field name="period"/>
 						<field name="end_date"/>
-						<field name="insurance"/>
+						<field name="day"/>
 						<field name="type_credit"/>
 					</group>
-					<group>
+					<!--<group string="Kredyt - realizacja">
 						<field name="year"/>
 						<field name="months"/>
-						<field name="day"/>
 						<field name="delay_day"/>
 						<field name="payment_request"/>
 						<field name="report_krd_big"/>
@@ -35,21 +40,19 @@
 						<field name="charge_call"/>
 						<field name="installment"/>
 						<field name="total_arrears"/>
-						<field name="amount_insurance"/>
-						<field name="amount_credit"/>
 						<field name="total_liabilities"/>
-						
-						
-					</group>
+					</group>-->
+					
 				</group>
 				<notebook colspan="4">
 					<page string="Harmonogram spłat">
 						<field name="schedule_ids">
 							<tree>
 								<field name="name"/>
-								<field name="repayment_interest"/>
 								<field name="repayment_credit"/>
+								<field name="repayment_interest"/>
 								<field name="full_installment"/>
+								
 								<field name="repay"/>
 							</tree>
 						</field>

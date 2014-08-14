@@ -12,6 +12,7 @@ class crm_lead(osv.osv):
         'payment_date' : fields.date('Data wypłaty'),
         'amount' : fields.float('Kwota'),
         'bank' : fields.many2one('res.partner', 'Bank', domain=[('bank','=','True')]),
+        'product' : fields.many2one('product.product', 'Produkt'),
         'interest' : fields.float('Oprocentowanie'),
         'bank_comission' : fields.char('Prowizja banku'),
         'period' : fields.integer('Okres'),
@@ -22,3 +23,4 @@ class crm_lead(osv.osv):
         'commission' : fields.integer('Prowizja za wcześniejszą spłatę'),
         'number_queries' : fields.integer('Ilość zapytań przez Neokredyt')
     }
+    

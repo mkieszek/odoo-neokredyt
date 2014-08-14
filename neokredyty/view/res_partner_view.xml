@@ -10,8 +10,17 @@
 			<field name="arch" type="xml">
 				<xpath expr="/form/sheet/notebook/page[@string='Accounting']" position="after">
 					
-                    <page string="Lista szans">
-                    	<field name="chances_ids"/>
+                    <page string="Lista szans" attrs="{'invisible':[('customer','=',False)]}">
+                    	<field name="chances_ids">
+                    		<tree>
+                    			<field name="bank"/>
+                				<field name="product"/>
+                				<field name="planned_revenue"/>
+                				<field name="create_date"/>
+                				<field name="name"/>
+                				<field name="stage_id"/>
+                    		</tree>
+                    	</field>
                     </page>
                     
                     <page string="Wnioski" attrs="{'invisible':[('bank','=',False)]}">
@@ -38,6 +47,9 @@
                 
 	            <xpath expr="/form/sheet/notebook/page[@string='Sales &amp; Purchases']/group/group/field[@name='supplier']" position="before">
 		            <field name="bank"/>
+		        </xpath>
+		        <xpath expr="/form/sheet/group/group/field[@name='website']" position="after">
+		            <field name="bank_aplication" widget="url" attrs="{'invisible':[('bank','=',False)]}"/>
 		        </xpath>
 			</field>
 		</record>

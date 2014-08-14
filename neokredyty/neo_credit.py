@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
+import pdb
+import neo_credit_stage
+import datetime
+import time
 
 from openerp.osv.orm import Model
 from openerp.osv import fields
-import pdb
-import neo_credit_stage
-
-
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 class neo_credit(Model):
     _name = "neo.credit"
@@ -15,14 +17,15 @@ class neo_credit(Model):
         'name' : fields.char('Nazwa',required=True),
         'schedule_ids' : fields.one2many('neo.schedule','credit_id'),
         'client_id': fields.many2one('res.partner', 'Klient', required=True),
-        'telephone' : fields.integer('Nr kontaktowy'),
-        'address' : fields.char('Adres korespondencyjny'),
-        'email' : fields.char('Mail'),
+        'phone' : fields.related('client_id', 'phone', type='char', string='Telefon', readonly=True),
+        'mobile' : fields.related('client_id', 'mobile', type='char', string='Telefon kom.', readonly=True),
+        'address' : fields.related('client_id', 'contact_address', type='char', string='Adres', readonly=True),
+        'email': fields.related('client_id', 'email', type='char', string='Email', readonly=True),
         'product_id' :fields.many2one('product.product', 'Produkt'),
         'contract_date' :fields.date('Data umowy'),
         'commission' : fields.float('Prowizja'),
         'interest' : fields.float('Oprocentowanie'),
-        'period' : fields.integer('Okres'),
+        'period' : fields.integer('Okres (miesiące)'),
         'end_date' : fields.date('Data zakończenia umowy'),
         'insurance' : fields.char('Ubezpieczenie'),
         'year': fields.integer('Rok'),
@@ -41,17 +44,25 @@ class neo_credit(Model):
         'stage_id' : fields.many2one('neo.credit.stage','Status'),
         'type_credit' : fields.selection((('1','Raty malejące'),('2','Raty równe')), 'Raty'),
     }
-    
+    _default = {
+                'stage_id' : 'active',
+                }
     
     def create(self, cr, uid, data, context=None):
         
         credit_id = super(neo_credit, self).create(cr, uid, data, context=context)
         credit = self.browse(cr, uid, credit_id)
-                
+        
+              
         total_liabilities = credit.amount_credit + credit.amount_insurance
+        pdb.set_trace()
+        mth = credit.period
+        contract_date = datetime.datetime.strptime(data['contract_date'],'%Y-%m-%d').date()
+        contract_date = contract_date + relativedelta(months=mth)
         
         vals_credit = {}
         vals_credit['total_liabilities'] = total_liabilities
+        vals_credit['end_date'] = contract_date
         
         self.write(cr, uid, [credit_id], vals_credit)
         
@@ -99,4 +110,18 @@ class neo_credit(Model):
                 i += 1
             
         return credit_id
+
+
+    def on_change_client_id(self, cr, uid, ids, client_id, context=None):
+        values = {}
+        if client_id:
+            client = self.pool.get('res.partner').browse(cr, uid, client_id, context=context)
+            values = {
+                'phone': client.phone,
+                'mobile': client.mobile,
+                'address': client.contact_address,
+                'email': client.email,
+
+            }
+        return {'value': values}
     
