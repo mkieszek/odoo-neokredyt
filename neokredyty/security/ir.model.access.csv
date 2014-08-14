@@ -3,7 +3,7 @@ access_neo_credits_read,neo.credits.read.chief,model_neo_credit,group_neo_chief,
 access_neo_credits_write,neo.credits.write.chief,model_neo_credit,group_neo_chief,0,1,0,0
 access_neo_credits_create,neo.credits.create.chief,model_neo_credit,group_neo_chief,0,0,1,0
 access_neo_credits_unlink,neo.credits.unlink.chief,model_neo_credit,group_neo_chief,0,0,0,1
-access_neo_schedule,neo.schedule.chief,model_neo_schedule,group_neo_chief,1,0,0,0
+access_neo_schedule,neo.schedule.chief,model_neo_schedule,group_neo_chief,1,1,1,0
 access_neo_credit_stage,neo.credit.stage.chief,model_neo_credit_stage,group_neo_chief,1,0,0,0
 access_neo_procedures,neo.procedures.consultant,model_neo_procedures,group_neo_consultant,1,1,1,1
 access_neo_conclusions,neo.conclusions.consultant,model_neo_conclusions,group_neo_consultant,1,1,1,1
@@ -11,3 +11,4 @@ access_account_move_line,account.move.line.consultant,account.model_account_move
 access_neo_procedures,neo.procedures.chief,model_neo_procedures,group_neo_chief,1,1,1,1
 access_neo_conclusions,neo.conclusions.chief,model_neo_conclusions,group_neo_chief,1,1,1,1
 access_account_move_line,account.move.line.chief,account.model_account_move_line,group_neo_chief,1,0,0,0
+access_neo_schedule,neo.schedule.chief,model_neo_schedule,group_neo_chief,1,1,1,0

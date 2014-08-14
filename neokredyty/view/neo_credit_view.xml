@@ -22,7 +22,7 @@
 						<field name="period"/>
 						<field name="end_date"/>
 						<field name="insurance"/>
-						<field name="type_schedule"/>
+						<field name="type_credit"/>
 					</group>
 					<group>
 						<field name="year"/>
@@ -43,8 +43,6 @@
 					</group>
 				</group>
 				<notebook colspan="4">
-					
-					<field name="type_schedule"/>
 					<page string="Harmonogram spłat">
 						<field name="schedule_ids">
 							<tree>
