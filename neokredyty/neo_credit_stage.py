@@ -16,3 +16,5 @@ class neo_credit_stage(osv.Model):
         'sequence': fields.integer('Sequence', help="Used to order the note stages"),
         'state' : fields.selection(AVAILABLE_STATES, 'State', required=True),
      }
+     _default = {
+                 'state' : 'active'}

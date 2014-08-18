@@ -13,8 +13,8 @@
                     <page string="Lista szans" attrs="{'invisible':[('customer','=',False)]}">
                     	<field name="chances_ids">
                     		<tree>
-                    			<field name="bank"/>
-                				<field name="product"/>
+                    			<field name="bank_id"/>
+                				<field name="product_id"/>
                 				<field name="planned_revenue"/>
                 				<field name="create_date"/>
                 				<field name="name"/>

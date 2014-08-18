@@ -27,33 +27,24 @@
 						<field name="contract_date"/>
 						<field name="period"/>
 						<field name="end_date"/>
-						<field name="day"/>
+						<field name="day_rate"/>
 						<field name="type_credit"/>
 					</group>
-					<!--<group string="Kredyt - realizacja">
-						<field name="year"/>
-						<field name="months"/>
-						<field name="delay_day"/>
-						<field name="payment_request"/>
-						<field name="report_krd_big"/>
-						<field name="termination"/>
-						<field name="charge_call"/>
-						<field name="installment"/>
-						<field name="total_arrears"/>
-						<field name="total_liabilities"/>
-					</group>-->
 					
 				</group>
 				<notebook colspan="4">
 					<page string="Harmonogram spłat">
 						<field name="schedule_ids">
 							<tree>
-								<field name="name"/>
+								<field name="date_rate"/>
 								<field name="repayment_credit"/>
 								<field name="repayment_interest"/>
 								<field name="full_installment"/>
-								
 								<field name="repay"/>
+								<field name="payment_day" on_change="on_change_delay_day(payment_day)"/>
+								<field name="delay_day"/>
+								<field name="payment_request"/>
+								<field name="report_krd_big"/>
 							</tree>
 						</field>
 					</page>
