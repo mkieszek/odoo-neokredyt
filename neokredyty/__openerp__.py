@@ -40,7 +40,8 @@
     'update_xml' : ['view/res_partner_view.xml',
                     'view/crm_lead_view.xml',
                     'view/neo_credit_view.xml',
-                    'view/neo_product_view.xml'],
+                    'view/neo_product_view.xml',
+                    'view/voucher_sales_purchase_view.xml'],
     'sequence': 1001,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

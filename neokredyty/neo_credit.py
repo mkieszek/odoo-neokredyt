@@ -66,28 +66,32 @@ class neo_credit(Model):
             while i < credit.period:
                 odsetki = dosplaty * credit.interest/100/12
                 dosplaty = dosplaty - rata
-                vals_schedule['repayment_interest'] = odsetki
-                vals_schedule['repay'] = dosplaty
-                vals_schedule['full_installment'] = rata + odsetki
-                vals_schedule['repayment_credit'] = rata
+                vals_schedule['repayment_interest'] = round(odsetki, 2)
+                vals_schedule['repay'] = round(dosplaty, 2)
+                vals_schedule['full_installment'] = round(rata, 2) + round(odsetki, 2)
+                vals_schedule['repayment_credit'] = round(rata, 2)
+                
                 if date_rate < contract_date:
                     date_rate = date_rate + relativedelta(months=1)
                 vals_schedule['date_rate'] = date_rate
-                #vals_schedule['delay_day'] = 
-                schedule_obj.create(cr, uid, vals_schedule)
-                i += 1
                 date_rate = date_rate + relativedelta(months=1) + relativedelta(day=credit.day_rate)
+                
+                schedule_obj.create(cr, uid, vals_schedule)
                 self.write(cr, uid, [credit_id], vals_schedule)
+                i += 1
+                
+                
         elif credit.type_credit == '2':
             while i < credit.period:
                 odsetki = (q-1)*dosplaty
                 kapital = 0.0
                 kapital = rata2 - odsetki
                 dosplaty = dosplaty - kapital
-                vals_schedule['repayment_interest'] = odsetki
-                vals_schedule['repayment_credit'] = kapital
-                vals_schedule['repay'] = dosplaty
-                vals_schedule['full_installment'] = kapital + odsetki
+                vals_schedule['repayment_interest'] = round(odsetki, 2)
+                vals_schedule['repayment_credit'] = round(kapital, 2)
+                vals_schedule['repay'] = round(dosplaty, 2)
+                vals_schedule['full_installment'] = round(kapital, 2) + round(odsetki, 2)
+                
                 if date_rate < contract_date:
                     date_rate = date_rate + relativedelta(months=1)
                 vals_schedule['date_rate'] = date_rate

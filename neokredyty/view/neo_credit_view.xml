@@ -35,13 +35,13 @@
 				<notebook colspan="4">
 					<page string="Harmonogram spłat">
 						<field name="schedule_ids">
-							<tree>
+							<tree editable="bottom" create="false">
 								<field name="date_rate"/>
 								<field name="repayment_credit"/>
 								<field name="repayment_interest"/>
 								<field name="full_installment"/>
 								<field name="repay"/>
-								<field name="payment_day" on_change="on_change_delay_day(payment_day)"/>
+								<field name="payment_day"/>
 								<field name="delay_day"/>
 								<field name="payment_request"/>
 								<field name="report_krd_big"/>
@@ -64,7 +64,7 @@
                         <field name="product_id" />
                     </tree>
                 </field>
-            </record>
+        </record>
         
         <record model='ir.ui.view' id='neo_credit_search'>
             <field name="name">neo.credit.search</field>
