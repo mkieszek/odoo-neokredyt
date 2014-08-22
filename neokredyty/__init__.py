@@ -7,3 +7,5 @@ import neo_credit_stage
 import neo_conclusions
 import neo_procedures
 import neo_schedule
+import account_voucher
+import account_voucher_line

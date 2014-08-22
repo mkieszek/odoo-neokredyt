@@ -27,7 +27,7 @@
     'description': """ """,
     'author': 'Via IT Solution',
     'website': 'http://www.viait.pl ',
-    'depends': ['crm','product','document'],
+    'depends': ['crm','product','document','account_invoice_pl_og','print_receipt'],
     'data': ['data/crm_lead_data.xml',
              'data/neo_product_data.xml',
              'data/neo_credit_stage_data.xml',
@@ -41,7 +41,8 @@
                     'view/crm_lead_view.xml',
                     'view/neo_credit_view.xml',
                     'view/neo_product_view.xml',
-                    'view/voucher_sales_purchase_view.xml'],
+                    'view/voucher_sales_purchase_view.xml',
+                    'view/account_voucher_view.xml'],
     'sequence': 1001,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

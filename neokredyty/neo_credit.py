@@ -37,6 +37,8 @@ class neo_credit(Model):
     
     def create(self, cr, uid, data, context=None):
         
+        stage_id = self.pool.get('neo.credit.stage').search(cr, uid, [('sequence','=',10)])[0]
+        data['stage_id'] = stage_id
         credit_id = super(neo_credit, self).create(cr, uid, data, context=context)
         credit = self.browse(cr, uid, credit_id)
         
@@ -52,7 +54,7 @@ class neo_credit(Model):
         self.write(cr, uid, [credit_id], vals_credit)
         
         schedule_obj = self.pool.get('neo.schedule')
-        
+         
         dosplaty = total_liabilities
         rata = total_liabilities / credit.period
         q=1+((0.0833333333)*(credit.interest/100))
