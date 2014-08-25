@@ -62,6 +62,8 @@
                     	<field name="name" />
                         <field name="client_id" />
                         <field name="product_id" />
+                        <field name="amount_credit"/>
+                        <field name="period"/>
                     </tree>
                 </field>
         </record>
