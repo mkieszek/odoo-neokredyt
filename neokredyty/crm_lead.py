@@ -11,9 +11,11 @@ class crm_lead(osv.osv):
     
     def _payment_month(self, cr, uid, ids, data, arg, context=None):
         vals = {}
+        
         for lead in self.browse(cr, uid, ids):
-            p_date = datetime.datetime.strptime(lead.payment_date,"%Y-%m-%d").date()
-            vals[lead.id] = str(p_date.month).zfill(2)
+            if lead.payment_date:
+                p_date = datetime.datetime.strptime(lead.payment_date,"%Y-%m-%d").date()
+                vals[lead.id] = str(p_date.month).zfill(2)
         return vals
     
     def _payment_month_search(self, cr, uid, ids, data, arg, context=None):

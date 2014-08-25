@@ -11,7 +11,7 @@
                 <h1><field name="name" class="oe_inline"/></h1>
 				<group col="4">
 					<group string="Dane klienta">
-						<field name="client_id" on_change="on_change_client_id(client_id)"/>
+						<field name="client_id" on_change="on_change_client_id(client_id)" domain="['|',('customer','=',True),('bank','=',True)]"/>
 						<field name="phone"/>
 						<field name="mobile"/>
 						<field name="address"/>
