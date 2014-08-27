@@ -6,8 +6,8 @@ from openerp.addons.mail.mail_message import decode
 import pdb
 
 AVAILABLE_METHOD = [
-    ('cash', 'Gotówka'),
-    ('transfer', 'Przelew')]
+    ('Gotowka', 'Gotówka'),
+    ('Przelew', 'Przelew')]
 
 def num2word(n,l="en_US"):
 #    wordtable = ["zer","jed","dwa","trz","czt","pie","sze","sie","osi","dzi"]
@@ -90,8 +90,8 @@ class account_voucher(osv.Model):
      
     _columns = {
         'payment_method': fields.selection(AVAILABLE_METHOD, 'Sposób zapłaty', required=True), 
-        'payment_date' : fields.date('Termin zapłaty'),
-        'bank_account_id' : fields.many2one('res.partner.bank','Bank'),
+        'payment_date' : fields.date('Termin zapłaty',),
+        'bank_account_id' : fields.many2one('res.partner.bank','Bank',),
         'num_to_word' : fields.function(_get_num2word, type='char', string='Słownie', store=False),
      }
 

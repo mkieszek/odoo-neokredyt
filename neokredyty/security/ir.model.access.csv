@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_neo_credit_stage_chief,neo.credit.stage.chief,model_neo_credit_stage,group_neo_chief,1,0,0,0
-access_account_move_line_consultant,account.move.line.consultant,account.model_account_move_line,group_neo_consultant,1,0,0,1
+access_account_move_line_consultant,account.move.line.consultant,account.model_account_move_line,group_neo_consultant,1,1,1,1
 access_account_move_line_chief,account.move.line.chief,account.model_account_move_line,group_neo_chief,1,1,1,1
 access_neo_schedule_chief,neo.schedule.chief,model_neo_schedule,group_neo_chief,1,1,1,0
 access_neo_procedures_consultant,neo.procedures.consultant,model_neo_procedures,group_neo_consultant,1,1,1,1
@@ -8,3 +8,4 @@ access_neo_conclusions_consultant,neo.conclusions.consultant,model_neo_conclusio
 access_neo_procedures_chief,neo.procedures.chief,model_neo_procedures,group_neo_chief,1,1,1,1
 access_neo_conclusions_chief,neo.conclusions.chief,model_neo_conclusions,group_neo_chief,1,1,1,1
 access_neo_credit_chief,neo.credit.chief,model_neo_credit,group_neo_chief,1,1,1,1
+access_account_invoice_pl_og_consultant,account.invoice.consultant,account.model_account_invoice,group_neo_consultant,1,1,1,1
