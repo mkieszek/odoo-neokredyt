@@ -5,6 +5,7 @@ from openerp.osv import fields, osv
 from openerp.addons.mail.mail_message import decode
 import pdb
 
+
 AVAILABLE_METHOD = [
     ('Gotowka', 'Gotówka'),
     ('Przelew', 'Przelew')]
@@ -89,7 +90,7 @@ class account_voucher(osv.Model):
         return res
      
     _columns = {
-        'payment_method': fields.selection(AVAILABLE_METHOD, 'Sposób zapłaty', required=True), 
+        'payment_method_id': fields.many2one('crm.payment.mode', 'Sposób zapłaty', required=True),
         'payment_date' : fields.date('Termin zapłaty',),
         'bank_account_id' : fields.many2one('res.partner.bank','Bank',),
         'num_to_word' : fields.function(_get_num2word, type='char', string='Słownie', store=False),

@@ -4,16 +4,12 @@ from openerp.osv.orm import Model
 from openerp.osv import fields, osv
 import pdb
 
-AVAILABLE_MEASURE = [
-    ('sztuka', 'szt.'),
-    ('opakowanie', 'opk.'),
-    ('skrzynia', 'skrz.')]
 
 class account_voucher_line(osv.Model):
     _inherit = "account.voucher.line"
     _columns = {
         'quantity' : fields.integer('Ilość'),
-        'measure' : fields.selection(AVAILABLE_MEASURE, 'Jednostka'), 
+        'measure_id' : fields.many2one('product.uom','Jednostka'), 
         'gross_amount' : fields.float('Cena jedn. brutto'),
      }
     
