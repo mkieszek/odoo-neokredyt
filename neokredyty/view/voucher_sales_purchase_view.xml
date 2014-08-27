@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>        
+		<record model="ir.ui.view" id="view_neo_voucher_sales_view">
+			<field name="name">neo.voucher.sales.form</field>
+			<field name="model">account.voucher</field>
+			<field name="inherit_id" ref="account_voucher.view_sale_receipt_form" />
+			<field name="priority" eval="99" />
+			<field name="arch" type="xml">
+				<xpath expr="/form/sheet/group/group/field[@name='partner_id']" position="attributes" >
+					<attribute name="domain">['|',('bank','=',True),('customer','=',True)]</attribute>
+                </xpath>
+			</field>
+		</record>    
+	</data>
+</openerp>

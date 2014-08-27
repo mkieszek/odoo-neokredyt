@@ -15,27 +15,27 @@
 					<field name="adv_mail"/>
 					<field name="adv_tel"/>
                 </xpath>
-				<xpath expr="/form/sheet/group/group/field[@name='priority']" position="after">
-					<field name="number_queries"/>
-                </xpath>
                 
-				<xpath expr="/form/sheet/notebook/page" position="after">
+				<xpath expr="/form/sheet/notebook/page" position="before">
                     <page string="Produkt">
                     	<group>
-	                    	<group>                    	
-		                    	<field name="payment_date"/>
+	                    	<group>                   
+	                    		<field name="bank_id"/>
+	                    		<field name="product_id"/>	
+		                    	<field name="payment_date"/>		                    	
+		                    	<field name="period"/>
 		                    	<field name="amount"/>
-		                    	<field name="bank"/>
+		                    	<field name="rate"/>
 		                    	<field name="interest"/>
-		                    	<field name="bank_comission"/>
 	                    	</group>
 	                    	<group>
-		                    	<field name="period"/>
-		                    	<field name="installment"/>
+		                    	<field name="rrso"/>
+		                    	<field name="bank_comission"/>
 		                    	<field name="insurance"/>
 		                    	<field name="insurer"/>
-		                    	<field name="rrso"/>
 		                    	<field name="commission"/>
+		                    	<field name="number_queries"/>
+		                    	<field name="payment_date_month"/>
 	                    	</group>
                     	</group>
                     </page>
@@ -43,5 +43,28 @@
 
 			</field>
 		</record>
+        <record model='ir.ui.view' id='crm_lead_search'>
+            <field name="name">crm.lead.search</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter" />
+            <field name="arch" type="xml">
+                <search string="Search Opportunities">
+                	<field name="bank_id" />
+        			<field name="product_id" />
+        			<field name="payment_month_search"/>
+        			<separator/>
+        			<filter string="Wypłacone" name="wypłacono" domain="[('stage_id.sequence','=',80)]"/>
+        			<filter string="Zamknięte" name="date_deadline" domain="[('date_deadline','!=',False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Banki" domain="[]" context="{'group_by':'bank_id'}"/>
+                        <filter string="Produkty" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Miesiąc wypłaty" domain="[]" context="{'group_by':'payment_date_month'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+        
+        
+
 	</data>
 </openerp>

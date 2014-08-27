@@ -9,46 +9,42 @@
                 <sheet>
                 <label class="oe_edit_only" for="name" string="Credit Name"/>
                 <h1><field name="name" class="oe_inline"/></h1>
-				<group col="2">
-					<group>
-						<field name="client_id"/>
-						<field name="telephone"/>
+				<group col="4">
+					<group string="Dane klienta">
+						<field name="client_id" on_change="on_change_client_id(client_id)" domain="['|',('customer','=',True),('bank','=',True)]"/>
+						<field name="phone"/>
+						<field name="mobile"/>
 						<field name="address"/>
 						<field name="email"/>
+					</group>
+					<group string="Kredyt - umowa">
 						<field name="product_id" />
-						<field name="contract_date"/>
+						<field name="amount_credit"/>
+						<field name="amount_insurance"/>
+						<field name="insurance"/>
 						<field name="commission"/>
 						<field name="interest"/>
+						<field name="contract_date"/>
 						<field name="period"/>
 						<field name="end_date"/>
-						<field name="insurance"/>
+						<field name="day_rate"/>
+						<field name="type_credit"/>
 					</group>
-					<group>
-						<field name="year"/>
-						<field name="months"/>
-						<field name="day_installment"/>
-						<field name="delay_day"/>
-						<field name="payment_request"/>
-						<field name="report_krd_big"/>
-						<field name="termination"/>
-						<field name="charge_call"/>
-						<field name="installment"/>
-						<field name="total_arrears"/>
-						<field name="amount_insurance"/>
-						<field name="amount_credit"/>
-						<field name="total_liabilities"/>
-					</group>
+					
 				</group>
 				<notebook colspan="4">
 					<page string="Harmonogram spłat">
 						<field name="schedule_ids">
-							<tree>
-								<field name="end_date"/>
-								<field name="part_interest"/>
-								<field name="part_capital"/>
-								<field name="number_rate"/>
-								<field name="installment_all"/>
-								<field name="capital_pay"/>
+							<tree editable="bottom" create="false">
+								<field name="date_rate"/>
+								<field name="repayment_credit"/>
+								<field name="repayment_interest"/>
+								<field name="full_installment"/>
+								<field name="repay"/>
+								<field name="payment_day"/>
+								<field name="delay_day"/>
+								<field name="payment_request"/>
+								<field name="report_krd_big"/>
 							</tree>
 						</field>
 					</page>
@@ -66,9 +62,11 @@
                     	<field name="name" />
                         <field name="client_id" />
                         <field name="product_id" />
+                        <field name="amount_credit"/>
+                        <field name="period"/>
                     </tree>
                 </field>
-            </record>
+        </record>
         
         <record model='ir.ui.view' id='neo_credit_search'>
             <field name="name">neo.credit.search</field>
@@ -77,6 +75,29 @@
                 <search string="All Credits">
                 	<field name="name" />
         			<field name="client_id" />
+               </search>
+            </field>
+        </record>
+        
+        <record model='ir.ui.view' id='neo_credit_search'>
+            <field name="name">neo.credit.search</field>
+            <field name="model">neo.credit</field>
+            <field name="arch" type="xml">
+                <search string="Wyszukaj kredytu">
+                	<field name="name"/>
+        			<field name="client_id" />
+                	<field name="product_id" />
+        			<separator/>
+        			<filter string="Aktywne" name="active" domain="[('stage_id.state','=','active')]"/>
+        			<filter string="Zamknięte" name="closed" domain="[('stage_id.state','=','closed')]"/>
+        			<filter string="W windykacji" name="vindication" domain="[('stage_id.state','=','vindication')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Status" domain="[]" context="{'group_by':'stage_id'}"/>
+                        <filter string="Klient" domain="[]" context="{'group_by':'client_id'}"/>
+                        <filter string="Produkt" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Miesiąc umowy" domain="[]" context="{'group_by':'contract_date_month'}"/>
+                        <filter string="Miesiąc zakończenia umowy" domain="[]" context="{'group_by':'end_date_month'}"/>
+                    </group>
                </search>
             </field>
         </record>
