@@ -27,7 +27,7 @@
     'description': """ """,
     'author': 'Via IT Solution',
     'website': 'http://www.viait.pl ',
-    'depends': ['crm','product'],
+    'depends': ['document','crm','product','account_invoice_pl_og'],
     'data': ['data/crm_lead_data.xml',
              'data/neo_product_data.xml',
              'data/neo_credit_stage_data.xml',
