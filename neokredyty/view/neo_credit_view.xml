@@ -79,6 +79,29 @@
             </field>
         </record>
         
+        <record model='ir.ui.view' id='neo_credit_search'>
+            <field name="name">neo.credit.search</field>
+            <field name="model">neo.credit</field>
+            <field name="arch" type="xml">
+                <search string="Wyszukaj kredytu">
+                	<field name="name"/>
+        			<field name="client_id" />
+                	<field name="product_id" />
+        			<separator/>
+        			<filter string="Aktywne" name="active" domain="[('stage_id.state','=','active')]"/>
+        			<filter string="Zamknięte" name="closed" domain="[('stage_id.state','=','closed')]"/>
+        			<filter string="W windykacji" name="vindication" domain="[('stage_id.state','=','vindication')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Status" domain="[]" context="{'group_by':'stage_id'}"/>
+                        <filter string="Klient" domain="[]" context="{'group_by':'client_id'}"/>
+                        <filter string="Produkt" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Miesiąc umowy" domain="[]" context="{'group_by':'contract_date_month'}"/>
+                        <filter string="Miesiąc zakończenia umowy" domain="[]" context="{'group_by':'end_date_month'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+        
         <record id="action_credits" model="ir.actions.act_window">
             <field name="name">Kredyty</field>
             <field name="type">ir.actions.act_window</field>
