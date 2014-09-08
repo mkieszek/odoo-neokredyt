@@ -1,45 +1,62 @@
 <openerp>
 	<data noupdate='False'>
-		
+        <record model="crm.case.stage" id="stage_lead1">
+            <field name="name">New</field>
+            <field name="case_default">1</field>
+            <field name="probability">0</field>
+            <field name="on_change">1</field>
+            <field name="sequence">1</field>
+            <field name="type">both</field>
+        </record>
         <record model="crm.case.stage" id="stage_lead2">
             <field name="name">Wniosek</field>
-            
+            <field name="sequence">100</field>
+            <field name="type">opportunity</field>
         </record>
         <record model="crm.case.stage" id="stage_lead3">
             <field name="name">Doradca</field>
-            <field name="sequence">10</field>
+            <field name="sequence">101</field>
+            <field name="type">opportunity</field>
         </record>
         <record model="crm.case.stage" id="stage_lead4">
             <field name="name">Analityk</field>
-            <field name="sequence">20</field>
+            <field name="sequence">102</field>
+            <field name="type">opportunity</field>
         </record>
         <record model="crm.case.stage" id="stage_lead5">
             <field name="name">Pozytywne</field>
-            <field name="sequence">30</field>
+            <field name="sequence">103</field>
+            <field name="type">opportunity</field>
         </record>
         <record model="crm.case.stage" id="stage_lead6">
             <field name="name">Negatywne</field>
-            <field name="sequence">40</field>
+            <field name="sequence">104</field>
+            <field name="type">opportunity</field>
         </record>
         <record model="crm.case.stage" id="stage_lead7">
             <field name="name">Odstępstwa</field>
-            <field name="sequence">50</field>
+            <field name="sequence">105</field>
+            <field name="type">opportunity</field>
         </record>
         <record model="crm.case.stage" id="stage_lead8">
             <field name="name">Umowa</field>
-            <field name="sequence">60</field>
+            <field name="sequence">106</field>
+            <field name="type">opportunity</field>
         </record>
         <record model="crm.case.stage" id="stage_lead9">
             <field name="name">Odmowa</field>
-            <field name="sequence">70</field>
+            <field name="sequence">107</field>
+            <field name="type">opportunity</field>
         </record>
         <record model="crm.case.stage" id="stage_lead10">
             <field name="name">Wypłacona</field>
-            <field name="sequence">80</field>
+            <field name="sequence">108</field>
+            <field name="type">opportunity</field>
         </record>
         <record model="crm.case.stage" id="stage_lead11">
             <field name="name">Anulowana</field>
-            <field name="sequence">90</field>
+            <field name="sequence">109</field>
+            <field name="type">opportunity</field>
         </record>
     </data>
 </openerp>

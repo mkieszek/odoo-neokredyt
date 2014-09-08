@@ -6,7 +6,7 @@
 			<field name="model">res.partner</field>
 			<field name="inherit_id" ref="base.view_partner_form" />
 			<field name="priority" eval="99" />
-            <field name="context">{"search_default_bank":1}</field>
+            <field name="context">{'search_default_bank':1}</field>
 			<field name="arch" type="xml">
 				<xpath expr="/form/sheet/notebook/page[@string='Accounting']" position="after">
 					
@@ -53,6 +53,7 @@
 		        </xpath>
 			</field>
 		</record>
+	    
 	    
 		<record model="ir.ui.view" id="view_neo_res_partner_filter">
 			<field name="name">view_neo_res_partner_filter</field>

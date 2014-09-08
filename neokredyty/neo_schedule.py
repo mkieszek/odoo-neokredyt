@@ -18,7 +18,7 @@ class neo_schedule(Model):
         'repay': fields.float('Pozostało do spłaty',readonly=True),
         'report_krd_big' : fields.integer('Raport KRD/BIG'),
         'payment_request' : fields.integer('Wezwania do zapłaty'),
-        'delay_day' : fields.integer('Ilość dni opóźnienia',readonly=True),
+        'delay_day' : fields.integer('opóźnienie (dni)',readonly=True),
     }
     
     

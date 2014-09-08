@@ -49,3 +49,4 @@ class crm_lead(osv.osv):
     }
     
     
+    
