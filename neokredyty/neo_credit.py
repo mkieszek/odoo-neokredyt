@@ -12,6 +12,23 @@ from dateutil.relativedelta import relativedelta
 class neo_credit(Model):
     _name = "neo.credit"
     
+    def _contract_month(self, cr, uid, ids, data, arg, context=None):
+        vals = {}
+        
+        for credit in self.browse(cr, uid, ids):
+            if credit.contract_date:
+                c_date = datetime.datetime.strptime(credit.contract_date,"%Y-%m-%d").date()
+                vals[credit.id] = str(c_date.month).zfill(2)
+        return vals
+
+    def _end_month(self, cr, uid, ids, data, arg, context=None):
+        vals = {}
+        
+        for credit in self.browse(cr, uid, ids):
+            if credit.end_date:
+                e_date = datetime.datetime.strptime(credit.end_date,"%Y-%m-%d").date()
+                vals[credit.id] = str(e_date.month).zfill(2)
+        return vals
 
     _columns = {
         'name' : fields.char('Nazwa',required=True),
@@ -23,10 +40,16 @@ class neo_credit(Model):
         'email': fields.related('client_id', 'email', type='char', string='Email', readonly=True),
         'product_id' :fields.many2one('product.product', 'Produkt',required=True),
         'contract_date' :fields.date('Data umowy',required=True),
+        'contract_date_month' : fields.function(_contract_month, string="Miesiąc wypłaty", type='char', store=True),
         'commission' : fields.float('Prowizja'),
         'interest' : fields.float('Oprocentowanie',required=True),
         'period' : fields.integer('Okres (miesiące)',required=True),
+<<<<<<< HEAD
         'end_date' : fields.date('Data zakończenia umowy', readonly=True),
+=======
+        'end_date' : fields.date('Data zakończenia umowy'),
+        'end_date_month' : fields.function(_end_month, string="Miesiąc zakończemia umowy", type='char', store=True),
+>>>>>>> 51195c98b45d86bbad4b3d9e3820267cc9b2d739
         'insurance' : fields.char('Ubezpieczenie'),
         'amount_insurance' : fields.float('Kwota ubezpieczenia'),
         'amount_credit' : fields.float('Kwota kredytu',required=True),
