@@ -16,7 +16,11 @@ class account_voucher_line(osv.Model):
     
     def create(self, cr, uid, data, context=None):
         
-        data['amount'] = data['quantity'] * data['gross_amount']
+        pdb.set_trace()
+        if "quantity" in data and data['quantity'] != False:
+            data['amount'] = data['quantity'] * data['gross_amount']
+        else:
+            data['amount'] = 0
         account_id = super(account_voucher_line, self).create(cr, uid, data, context=context)        
         return account_id
    
