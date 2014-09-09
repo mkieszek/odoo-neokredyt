@@ -44,7 +44,7 @@ class neo_credit(Model):
         'commission' : fields.float('Prowizja'),
         'interest' : fields.float('Oprocentowanie',required=True),
         'period' : fields.integer('Okres (miesiące)',required=True),
-        'end_date' : fields.date('Data zakończenia umowy'),
+        'end_date' : fields.date('Data zakończenia umowy',readonly=True),
         'end_date_month' : fields.function(_end_month, string="Miesiąc zakończemia umowy", type='char', store=True),
         'insurance' : fields.char('Ubezpieczenie'),
         'amount_insurance' : fields.float('Kwota ubezpieczenia'),
