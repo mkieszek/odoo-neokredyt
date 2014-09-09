@@ -44,12 +44,9 @@ class neo_credit(Model):
         'commission' : fields.float('Prowizja'),
         'interest' : fields.float('Oprocentowanie',required=True),
         'period' : fields.integer('Okres (miesiące)',required=True),
-<<<<<<< HEAD
         'end_date' : fields.date('Data zakończenia umowy', readonly=True),
-=======
         'end_date' : fields.date('Data zakończenia umowy'),
         'end_date_month' : fields.function(_end_month, string="Miesiąc zakończemia umowy", type='char', store=True),
->>>>>>> 51195c98b45d86bbad4b3d9e3820267cc9b2d739
         'insurance' : fields.char('Ubezpieczenie'),
         'amount_insurance' : fields.float('Kwota ubezpieczenia'),
         'amount_credit' : fields.float('Kwota kredytu',required=True),
@@ -128,7 +125,7 @@ class neo_credit(Model):
                 vals_schedule['full_installment'] = round(kapital, 2) + round(odsetki, 2)
                 
                 sum_interest = sum_interest + round(odsetki, 2)
-                sum_credit = sum_credit + round(rata, 2)
+                sum_credit = sum_credit + (round(kapital, 2) + round(odsetki, 2))
                 
                 if date_rate < contract_date:
                     date_rate = date_rate + relativedelta(months=1)

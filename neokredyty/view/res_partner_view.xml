@@ -53,10 +53,6 @@
 		        </xpath>
 			</field>
 		</record>
-<<<<<<< HEAD
-	    
-	    
-=======
 
 		<record id="action_partner_form" model="ir.actions.act_window">
             <field name="name">Customers</field>
@@ -67,8 +63,6 @@
             <field name="context">{"search_default_customer":1, "search_default_is_bank":1}</field>
 			<field name="search_view_id" ref="base.view_res_partner_filter"/>
         </record>
-		
->>>>>>> 51195c98b45d86bbad4b3d9e3820267cc9b2d739
 		<record model="ir.ui.view" id="view_neo_res_partner_filter">
 			<field name="name">view_neo_res_partner_filter</field>
 			<field name="model">res.partner</field>
