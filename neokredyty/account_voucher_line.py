@@ -16,7 +16,7 @@ class account_voucher_line(osv.Model):
     
     def create(self, cr, uid, data, context=None):
         
-        pdb.set_trace()
+        #pdb.set_trace()
         if "quantity" in data and data['quantity'] != False:
             data['amount'] = data['quantity'] * round(data['gross_amount'], 2)
         elif 'amount_gross' in data:

@@ -1,13 +1,6 @@
 <openerp>
 	<data noupdate='False'>
-        <record model="crm.case.stage" id="stage_lead1">
-            <field name="name">New</field>
-            <field name="case_default">1</field>
-            <field name="probability">0</field>
-            <field name="on_change">1</field>
-            <field name="sequence">1</field>
-            <field name="type">both</field>
-        </record>
+
         <record model="crm.case.stage" id="stage_lead2">
             <field name="name">Wniosek</field>
             <field name="sequence">100</field>
