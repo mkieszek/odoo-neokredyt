@@ -1,0 +1,15 @@
+<openerp>
+	<data noupdate='False'>
+        <record model="crm.payment.mode" id="cash">
+            <field name="name">Gotówka</field>
+        </record>
+        <record model="crm.payment.mode" id="transfer">
+            <field name="name">Przelew</field>
+        </record>
+        <delete model="crm.payment.mode" id="payment_mode_1"/>
+        <delete model="crm.payment.mode" id="payment_mode_2"/>
+        <delete model="crm.payment.mode" id="payment_mode_3"/>
+        <delete model="crm.payment.mode" id="payment_mode_4"/>
+    </data>
+    
+</openerp>
