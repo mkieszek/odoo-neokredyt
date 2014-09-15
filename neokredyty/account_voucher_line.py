@@ -4,23 +4,24 @@ from openerp.osv.orm import Model
 from openerp.osv import fields, osv
 import pdb
 
-AVAILABLE_MEASURE = [
-    ('sztuka', 'szt.'),
-    ('opakowanie', 'opk.'),
-    ('skrzynia', 'skrz.')]
 
 class account_voucher_line(osv.Model):
     _inherit = "account.voucher.line"
     _columns = {
         'quantity' : fields.integer('Ilość'),
-        'measure' : fields.selection(AVAILABLE_MEASURE, 'Jednostka'), 
+        'measure_id' : fields.many2one('product.ul','Jednostka'), 
+        'measure_name' : fields.related('measure_id','name', type='char', string='Jednostka'),
         'gross_amount' : fields.float('Cena jedn. brutto'),
      }
     
     def create(self, cr, uid, data, context=None):
         
-        data['amount'] = data['quantity'] * data['gross_amount']
-        account_id = super(account_voucher_line, self).create(cr, uid, data, context=context)        
+        #pdb.set_trace()
+        if "quantity" in data and data['quantity'] != False:
+            data['amount'] = data['quantity'] * round(data['gross_amount'], 2)
+        elif 'amount_gross' in data:
+            data['amount'] = round(data['gross_amount'], 2)
+        account_id = super(account_voucher_line, self).create(cr, uid, data, context=context)
         return account_id
    
    

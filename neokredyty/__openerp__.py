@@ -31,6 +31,7 @@
     'data': ['data/crm_lead_data.xml',
              'data/neo_product_data.xml',
              'data/neo_credit_stage_data.xml',
+             'data/crm_payment_mode_data.xml',
              'security/neo_security.xml',
              'security/ir.model.access.csv'],
     'demo': [],

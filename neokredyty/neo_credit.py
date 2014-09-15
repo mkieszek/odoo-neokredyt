@@ -44,6 +44,7 @@ class neo_credit(Model):
         'commission' : fields.float('Prowizja'),
         'interest' : fields.float('Oprocentowanie',required=True),
         'period' : fields.integer('Okres (miesiące)',required=True),
+        'end_date' : fields.date('Data zakończenia umowy', readonly=True),
         'end_date' : fields.date('Data zakończenia umowy'),
         'end_date_month' : fields.function(_end_month, string="Miesiąc zakończemia umowy", type='char', store=True),
         'insurance' : fields.char('Ubezpieczenie'),
@@ -52,6 +53,8 @@ class neo_credit(Model):
         'stage_id' : fields.many2one('neo.credit.stage','Status'),
         'day_rate' : fields.integer('Dzień raty',required=True),
         'type_credit' : fields.selection((('1','Raty malejące'),('2','Raty równe')), 'Raty',required=True),
+        'sum_interest' : fields.float('Suma odsetek', readonly=True),
+        'sum_credit' : fields.float('Całkowity koszt kredytu', readonly=True),
     }
     
     def create(self, cr, uid, data, context=None):
@@ -61,6 +64,8 @@ class neo_credit(Model):
         credit_id = super(neo_credit, self).create(cr, uid, data, context=context)
         credit = self.browse(cr, uid, credit_id)
         
+        sum_interest = 0.0
+        sum_credit = 0.0
         
         total_liabilities = credit.amount_credit + credit.amount_insurance
         contract_date = datetime.datetime.strptime(data['contract_date'],'%Y-%m-%d').date()
@@ -92,11 +97,17 @@ class neo_credit(Model):
                 vals_schedule['full_installment'] = round(rata, 2) + round(odsetki, 2)
                 vals_schedule['repayment_credit'] = round(rata, 2)
                 
+                
+                sum_interest = sum_interest + odsetki
+                sum_credit = sum_credit + rata
+                
                 if date_rate < contract_date:
                     date_rate = date_rate + relativedelta(months=1)
                 vals_schedule['date_rate'] = date_rate
                 date_rate = date_rate + relativedelta(months=1) + relativedelta(day=credit.day_rate)
                 
+                vals_schedule['sum_interest'] = sum_interest 
+                vals_schedule['sum_credit'] = sum_credit + sum_interest
                 schedule_obj.create(cr, uid, vals_schedule)
                 self.write(cr, uid, [credit_id], vals_schedule)
                 i += 1
@@ -113,11 +124,16 @@ class neo_credit(Model):
                 vals_schedule['repay'] = round(dosplaty, 2)
                 vals_schedule['full_installment'] = round(kapital, 2) + round(odsetki, 2)
                 
+                sum_interest = sum_interest + round(odsetki, 2)
+                sum_credit = sum_credit + (round(kapital, 2) + round(odsetki, 2))
+                
                 if date_rate < contract_date:
                     date_rate = date_rate + relativedelta(months=1)
                 vals_schedule['date_rate'] = date_rate
                 date_rate = date_rate + relativedelta(months=1) + relativedelta(day=credit.day_rate)
                 
+                vals_schedule['sum_interest'] = sum_interest  
+                vals_schedule['sum_credit'] = sum_credit            
                 schedule_obj.create(cr, uid, vals_schedule)
                 self.write(cr, uid, [credit_id], vals_schedule)
                 i += 1

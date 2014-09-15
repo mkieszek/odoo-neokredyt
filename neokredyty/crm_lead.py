@@ -48,4 +48,38 @@ class crm_lead(osv.osv):
         'number_queries' : fields.integer('Ilość zapytań przez Neokredyt')
     }
     
+    def create(self, cr, uid, data, context=None):
+        
+        lead_id = super(crm_lead, self).create(cr, uid, data, context=context)
+        self.send_mail(cr, uid, lead_id, context)
+        return lead_id
+    
+    def send_mail(self, cr, uid, lead_id, context=None):
+        #pdb.set_trace()
+        users_obj = self.pool.get('res.users')
+        user = users_obj.browse(cr, uid, uid)
+        lead = self.browse(cr, uid, lead_id)
+        
+        mail_to = ""
+        if lead.user_id.partner_id.email is not False and lead.user_id.active is True:
+            mail_to += lead.user_id.partner_id.email 
+        if mail_to is not "":
+            url = ("http://192.168.56.10:8069/?db=%s#id=%s&view_type=form&model=crm.lead")%(cr.dbname, lead_id)
+            pdb.set_trace()
+            subject = ("Zostałeś dodany do nowo utworzonej Szansy!").decode('utf8')
+            body = (("Nowa szansa o nazwie: %s <br/>Zastała utworzona przez: %s<br/>Dadano do sprzedawcy: %s <br/><a href='%s'>Podgląd szansy</a>").decode('utf8'))\
+                    %(lead.name,user.name,lead.user_id.partner_id.name,url)
+            
+            email_from = user.partner_id.name+"<"+user.partner_id.email+">"
+                
+            vals = {'email_from': email_from,
+                    'email_to': mail_to,
+                    'state': 'outgoing',
+                    'subject': subject,
+                    'body_html': body,
+                    'auto_delete': True}
+                    
+            self.pool.get('mail.mail').create(cr, uid, vals, context=context)
+    
+    
     
