@@ -9,7 +9,7 @@ class account_voucher_line(osv.Model):
     _inherit = "account.voucher.line"
     _columns = {
         'quantity' : fields.integer('Ilość'),
-        'measure_id' : fields.many2one('product.uom','Jednostka'), 
+        'measure_id' : fields.many2one('product.ul','Jednostka'), 
         'measure_name' : fields.related('measure_id','name', type='char', string='Jednostka'),
         'gross_amount' : fields.float('Cena jedn. brutto'),
      }

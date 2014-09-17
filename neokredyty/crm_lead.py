@@ -66,7 +66,6 @@ class crm_lead(osv.osv):
             mail_to += lead.user_id.partner_id.email 
         if mail_to is not "":
             url = ("http://192.168.56.10:8069/?db=%s#id=%s&view_type=form&model=crm.lead")%(cr.dbname, lead_id)
-            #pdb.set_trace()
             subject = ("Zostałeś dodany do nowo utworzonej Szansy!").decode('utf8')
             body = (("Nowa szansa o nazwie: %s <br/>Zastała utworzona przez: %s<br/>Dadano do sprzedawcy: %s <br/><a href='%s'>Podgląd szansy</a>").decode('utf8'))\
                     %(lead.name,user.name,lead.user_id.partner_id.name,url)
