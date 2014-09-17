@@ -20,6 +20,16 @@ class neo_credit(Model):
                 c_date = datetime.datetime.strptime(credit.contract_date,"%Y-%m-%d").date()
                 vals[credit.id] = str(c_date.month).zfill(2)
         return vals
+    
+    def _contract_year(self, cr, uid, ids, data, arg, context=None):
+        vals = {}
+        
+        for credit in self.browse(cr, uid, ids):
+            if credit.contract_date:
+                #pdb.set_trace()
+                con_date = datetime.datetime.strptime(credit.contract_date,"%Y-%m-%d").date()
+                vals[credit.id] = str(con_date.year).zfill(2)
+        return vals
 
     def _end_month(self, cr, uid, ids, data, arg, context=None):
         vals = {}
@@ -31,7 +41,7 @@ class neo_credit(Model):
         return vals
 
     _columns = {
-        'name' : fields.char('Nazwa',required=True),
+        'name' : fields.char('Nazwa',required=True, readonly=True, select=True),
         'schedule_ids' : fields.one2many('neo.schedule','credit_id'),
         'client_id': fields.many2one('res.partner', 'Klient', required=True),
         'phone' : fields.related('client_id', 'phone', type='char', string='Telefon', readonly=True),
@@ -41,6 +51,7 @@ class neo_credit(Model):
         'product_id' :fields.many2one('product.product', 'Produkt',required=True),
         'contract_date' :fields.date('Data umowy',required=True),
         'contract_date_month' : fields.function(_contract_month, string="Miesiąc wypłaty", type='char', store=True),
+        'contract_date_year' : fields.function(_contract_year, string="rok", type='char', store=True),
         'commission' : fields.float('Prowizja'),
         'interest' : fields.float('Oprocentowanie',required=True),
         'period' : fields.integer('Okres (miesiące)',required=True),
@@ -54,9 +65,15 @@ class neo_credit(Model):
         'type_credit' : fields.selection((('1','Raty malejące'),('2','Raty równe')), 'Raty',required=True),
         'sum_interest' : fields.float('Suma odsetek', readonly=True),
         'sum_credit' : fields.float('Całkowity koszt kredytu', readonly=True),
+        
     }
+    _defaults = {
+        'name': lambda obj, cr, uid, context: '.'}
     
     def create(self, cr, uid, data, context=None):
+        
+        if data.get('name','.')=='.':
+            data['name'] = self.pool.get('ir.sequence').get(cr, uid, 'neo.credit') or '.'
         
         stage_id = self.pool.get('neo.credit.stage').search(cr, uid, [('sequence','=',10)])[0]
         data['stage_id'] = stage_id
