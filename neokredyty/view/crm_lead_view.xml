@@ -54,7 +54,7 @@
         			<field name="product_id" />
         			<field name="payment_month_search"/>
         			<separator/>
-        			<filter string="Wypłacone" name="wypłacono" domain="[('stage_id.sequence','=',80)]"/>
+        			<filter string="Wypłacone" name="wypłacono" domain="[('stage_id.sequence','=',108)]"/>
         			<filter string="Zamknięte" name="date_deadline" domain="[('date_deadline','!=',False)]"/>
                     <group expand="0" string="Group By">
                         <filter string="Banki" domain="[]" context="{'group_by':'bank_id'}"/>
@@ -75,9 +75,12 @@
 					<xpath expr="/tree/field[@name='name']" position="after">
 						<field name="bank_id" />
 					</xpath>
+					<xpath expr="/tree/field[@name='planned_revenue']" position="attributes">
+						<attribute name="string">Kwota kredytu</attribute>
+                	</xpath>
                 </field>
         </record>
-        
-
+    	<menuitem name="Wnioski" id="crm.menu_crm_opportunities" parent="base.menu_sales" sequence="4"
+            action="crm.crm_case_category_act_oppor11"/>
 	</data>
 </openerp>
