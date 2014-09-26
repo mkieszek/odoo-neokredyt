@@ -80,6 +80,3 @@ class crm_lead(osv.osv):
                     'auto_delete': True}
                     
             self.pool.get('mail.mail').create(cr, uid, vals, context=context)
-    
-    
-    

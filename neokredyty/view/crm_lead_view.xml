@@ -80,7 +80,7 @@
                 	</xpath>
                 </field>
         </record>
-    	<menuitem name="Wnioski" id="crm.menu_crm_opportunities" parent="base.menu_sales" sequence="4"
+    	<menuitem name="Conclusions" id="crm.menu_crm_opportunities" parent="base.menu_sales" sequence="4"
             action="crm.crm_case_category_act_oppor11"/>
 	</data>
 </openerp>
