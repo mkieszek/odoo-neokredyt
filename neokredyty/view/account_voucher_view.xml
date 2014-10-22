@@ -9,7 +9,7 @@
 				<xpath expr="/form/sheet/group/group/field[@name='name']" position="after">
 					<group string="Sposób zapłaty">
 						<field name="payment_method_id" attrs="{'readonly': [('state','!=','draft')]}"/>
-						<field name="bank_account_id" domain="[('partner_id', '=',partner_id)]" attrs="{'readonly': [('state','!=','draft')]}"/>
+						<field name="bank_account_id" attrs="{'readonly': [('state','!=','draft')]}"/>
 						<!--<field name="payment_date" attrs="{'readonly': [('state','!=','draft')]}"/>-->
 					</group>
                 </xpath>
