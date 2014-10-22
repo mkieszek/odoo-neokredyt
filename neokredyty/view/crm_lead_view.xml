@@ -36,6 +36,7 @@
 		                    	<field name="commission"/>
 		                    	<field name="number_queries"/>
 		                    	<field name="payment_date_month"/>
+		                    	<field name="income"/>
 	                    	</group>
                     	</group>
                     </page>
@@ -53,7 +54,7 @@
         			<field name="product_id" />
         			<field name="payment_month_search"/>
         			<separator/>
-        			<filter string="Wypłacone" name="wypłacono" domain="[('stage_id.sequence','=',80)]"/>
+        			<filter string="Wypłacone" name="wypłacono" domain="[('stage_id.sequence','=',108)]"/>
         			<filter string="Zamknięte" name="date_deadline" domain="[('date_deadline','!=',False)]"/>
                     <group expand="0" string="Group By">
                         <filter string="Banki" domain="[]" context="{'group_by':'bank_id'}"/>
@@ -63,8 +64,23 @@
                </search>
             </field>
         </record>
-        
-        
-
+		<record model='ir.ui.view' id='neo_lead_tree'>
+                <field name="name">neo.lead.tree</field>
+                <field name="model">crm.lead</field>
+                <field name="inherit_id" ref="crm.crm_case_tree_view_oppor" />
+                <field name="arch" type="xml">
+					<xpath expr="/tree/field[@name='stage_id']" position="after">
+						<field name="income" />
+					</xpath>
+					<xpath expr="/tree/field[@name='name']" position="after">
+						<field name="bank_id" />
+					</xpath>
+					<xpath expr="/tree/field[@name='planned_revenue']" position="attributes">
+						<attribute name="string">Kwota kredytu</attribute>
+                	</xpath>
+                </field>
+        </record>
+    	<menuitem name="Conclusions" id="crm.menu_crm_opportunities" parent="base.menu_sales" sequence="4"
+            action="crm.crm_case_category_act_oppor11"/>
 	</data>
 </openerp>

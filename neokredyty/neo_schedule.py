@@ -24,14 +24,12 @@ class neo_schedule(Model):
     
     def write(self, cr, uid, ids, vals, context=None):
         schedule = self.browse(cr, uid, ids)
-        
+
         date_rate = datetime.datetime.strptime(schedule.date_rate,'%Y-%m-%d').date()
-        payment_day = datetime.datetime.strptime(vals['payment_day'],'%Y-%m-%d').date()  
               
-        if vals['payment_day']:
+        if 'payment_day' in vals and vals['payment_day']:
+            payment_day = datetime.datetime.strptime(vals['payment_day'],'%Y-%m-%d').date()  
             delay_day = payment_day - date_rate
-            data = {}
-            data['delay_day'] = int(delay_day.days)
-            data['payment_day'] = vals['payment_day']
+            vals['delay_day'] = int(delay_day.days)
             
-        return super(neo_schedule, self).write(cr, uid, ids, data, context=context)
+        return super(neo_schedule, self).write(cr, uid, ids, vals, context=context)

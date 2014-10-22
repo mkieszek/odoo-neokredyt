@@ -45,7 +45,8 @@ class crm_lead(osv.osv):
         'insurer' : fields.char('Ubezpieczyciel'),
         'rrso' : fields.float('RRSO'),
         'commission' : fields.float('Prowizja za wcześniejszą spłatę'),
-        'number_queries' : fields.integer('Ilość zapytań przez Neokredyt')
+        'number_queries' : fields.integer('Ilość zapytań przez Neokredyt'),
+        'income' : fields.integer('Dochód')
     }
     
     def create(self, cr, uid, data, context=None):
@@ -65,7 +66,6 @@ class crm_lead(osv.osv):
             mail_to += lead.user_id.partner_id.email 
         if mail_to is not "":
             url = ("http://192.168.56.10:8069/?db=%s#id=%s&view_type=form&model=crm.lead")%(cr.dbname, lead_id)
-            pdb.set_trace()
             subject = ("Zostałeś dodany do nowo utworzonej Szansy!").decode('utf8')
             body = (("Nowa szansa o nazwie: %s <br/>Zastała utworzona przez: %s<br/>Dadano do sprzedawcy: %s <br/><a href='%s'>Podgląd szansy</a>").decode('utf8'))\
                     %(lead.name,user.name,lead.user_id.partner_id.name,url)
@@ -80,6 +80,3 @@ class crm_lead(osv.osv):
                     'auto_delete': True}
                     
             self.pool.get('mail.mail').create(cr, uid, vals, context=context)
-    
-    
-    

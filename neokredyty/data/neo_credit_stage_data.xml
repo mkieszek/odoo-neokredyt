@@ -1,5 +1,15 @@
 <openerp>
 	<data noupdate='False'>
+        <record id="seq_type_neo_credit" model="ir.sequence.type">
+            <field name="name">Credit</field>
+            <field name="code">neo.credit</field>
+        </record>
+        <record id="seq_neo_credit" model="ir.sequence">
+            <field name="name">Credit</field>
+            <field name="code">neo.credit</field>
+            <field name="padding">4</field>
+        </record>
+        
         <record model="neo.credit.stage" id="credit_active">
             <field name="name">Aktywny</field>
             <field name="sequence">10</field>
